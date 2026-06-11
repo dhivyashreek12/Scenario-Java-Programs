@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+
+        ArrayList<Integer> nums = new ArrayList<>();
+
+        String line = sc.nextLine();
+        String[] arr = line.split(" ");
+
+        for (String s : arr) {
+            nums.add(Integer.parseInt(s));
+        }
+
+        int k = sc.nextInt();
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+
+        int sum = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            sum += num;
+
+            if (map.containsKey(sum - k)) {
+                count += map.get(sum - k);
+            }
+
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+
+        System.out.println("The count of the subarray whereas equals to the target is : " + count);
+    }
+}
