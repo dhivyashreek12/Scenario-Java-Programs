@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        if (a <= 0 || b <= 0 || a >= b) {
+            System.out.println("Provide valid input");
+            return;
+        }
+
+        for (int i = a; i <= b; i++) {
+            if (i < 2) {
+                continue;
+            }
+
+            int j = 2;
+            boolean isPrime = true;
+
+            while (j <= Math.sqrt(i)) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+                j++;
+            }
+
+            if (isPrime) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
